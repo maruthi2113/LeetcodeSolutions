@@ -1,0 +1,31 @@
+class Solution {
+    public int countNodes(TreeNode root) {
+        return pro(root);
+    }
+    public int pro(TreeNode root)
+    {
+        if(root==null)
+        return 0;
+        
+        int l=0;
+        if(root.left!=null)
+        l=pro(root.left);
+        int r=0;
+        if(root.right!=null)
+        r=pro(root.right);
+        return l+r+1;
+    }
+}
+
+
+// ------Another Solution--------//
+
+class Solution {
+    public int countNodes(TreeNode root) {
+        if(root==null)
+        return 0;
+        int l=countNodes(root.left);
+        int r=countNodes(root.right);
+        return l+r+1;
+    }
+}
