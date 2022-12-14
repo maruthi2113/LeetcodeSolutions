@@ -1,0 +1,25 @@
+class Solution {
+    public int rob(int[] a) {
+        if(a.length==0)
+            return 0;
+        if(a.length==1)
+            return a[0];
+        if(a.length==2)
+            return Math.max(a[1],a[0]);
+        int prev1=a[0];
+        int prev =0;
+        
+        for(int i=1;i<a.length;i++)
+        {
+         int take=a[i];
+            if(i>1)
+                take=take+prev;
+            int notake=prev1;
+            int cur= Math.max(take,notake);
+            prev=prev1;
+            prev1=cur;
+            
+        }
+        return prev1;
+    }
+}
