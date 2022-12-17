@@ -1,0 +1,36 @@
+class Solution {
+    public int evalRPN(String[] tokens) {
+        int[] arr= new int[tokens.length];
+        int ind=-1;
+        for(String i:tokens)
+        {
+            if(isOperator(i))
+            {
+              int op2=arr[ind--];
+              int op1=arr[ind--];
+              arr[++ind]=pro(op1,op2,i);
+            }
+            else
+            arr[++ind]=Integer.parseInt(i);
+        }
+        return arr[ind--];
+    }
+    public boolean isOperator(String i)
+    {
+        return (i.equals("/")||i.equals("*")||i.equals("+")||i.equals("-"));
+    }
+    public int pro(int op1,int op2,String operator)
+    {
+        switch(operator)
+        {
+            case"/":
+            return op1/op2;
+            case "*":
+            return op1*op2;
+            case "+":
+            return op1+op2;
+            default:
+            return op1-op2;
+        }
+    }
+}
