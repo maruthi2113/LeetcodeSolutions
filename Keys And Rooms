@@ -1,0 +1,23 @@
+class Solution {
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        int n=rooms.size();
+        boolean visited[]= new boolean[n];
+        pro(rooms,visited,0);
+         for(boolean b:visited)
+         {
+             if(!b)
+             return false;
+         }
+        return true;
+    }
+
+    public void pro(List<List<Integer>> rooms,boolean[] visited,int room)
+    {
+        visited[room]=true;
+        for(int key:rooms.get(room))
+        {
+            if(!visited[key])
+            pro(rooms,visited,key);
+        }
+    }
+}
