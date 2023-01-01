@@ -1,0 +1,15 @@
+class Solution {
+    public int countDigits(int num) {
+        int count=0;
+        int rem=0;
+        int dup=num;
+        while(dup>0)
+        {
+            rem=dup%10;
+            if(rem!=0&&num%rem==0)
+                count++;
+            dup=dup/10;
+        }
+        return count;
+    }
+}
