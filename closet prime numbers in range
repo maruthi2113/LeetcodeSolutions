@@ -1,0 +1,41 @@
+class Solution {
+    public int[] closestPrimes(int left, int right) {
+        List<Integer> s= new ArrayList<>();
+           if(left==1||left==0)
+               left=2;
+           for(int i=left;i<=right;i++)
+           {
+               if(prime(i)==true)
+               {
+                   s.add(i);
+               }
+           }
+        if(s.size()==1)
+           return new int[]{-1,-1};
+        int first=-1;
+        int second=-1;
+        int min=Integer.MAX_VALUE;
+        for(int i=0;i<s.size()-1;i++)
+        {
+            int firsti=s.get(i);
+            int secondi=s.get(i+1);
+            if(secondi-firsti<min)
+            {
+                first=firsti;
+                second=secondi;
+                min=second-first;
+            }
+        }
+        
+        return new int[]{first,second};
+    }
+    public boolean prime(int n)
+    {
+        for(int i=2;i*i<=n;i++)
+        {
+            if(n%i==0)
+                return false;
+        }
+        return true;
+    }
+}
