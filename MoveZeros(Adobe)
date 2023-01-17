@@ -1,0 +1,18 @@
+public class Solution {
+    public ArrayList<Integer> solve(ArrayList<Integer> A) {
+        int count;
+        int n=A.size();
+        int j=0;
+        for(int i=0;i<n;i++)
+        {
+            int inner=A.get(i);
+            if(inner!=0)
+               A.set(j++,inner);           
+        }
+        while(j<n)
+        {
+            A.set(j++,0);
+        }
+        return A;
+    }
+}
