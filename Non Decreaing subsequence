@@ -1,0 +1,38 @@
+//Given an integer array nums, return all the different possible non-decreasing subsequences of 
+//the given array with at least two elements. You may return the answer in any order.
+
+// TestCases
+Input: nums = [4,6,7,7]
+Output: [[4,6],[4,6,7],[4,6,7,7],[4,7],[4,7,7],[6,7],[6,7,7],[7,7]]
+
+Input: nums = [4,4,3,2,1]
+Output: [[4,4]]
+
+
+class Solution {
+    List<List<Integer>> ans =new ArrayList<>();
+    public List<List<Integer>> findSubsequences(int[] nums) {
+        int n=nums.length;
+        
+       pro(0,nums,ans,new ArrayList<>(),n);
+       return ans;
+    }
+    public void pro(int i,int[] nums,List<List<Integer>> ans,ArrayList<Integer> inner,int n)
+    {
+        if(i==n)
+        {
+            if(inner.size()>1)
+            ans.add(new ArrayList<>(inner));
+            return ;
+        }
+        if(inner.size()==0||inner.get(inner.size()-1)<=nums[i])
+        {
+            inner.add(nums[i]);
+            pro(i+1,nums,ans,inner,n);
+            inner.remove(inner.size()-1);
+        }
+        if(i==0||inner.size()==0||inner.get(inner.size()-1)!=nums[i])
+        pro(i+1,nums,ans,inner,n);
+        
+    }
+}
