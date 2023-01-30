@@ -1,0 +1,20 @@
+class Solution {
+    public int tribonacci(int n) {
+        if(n==0)
+        return 0;
+        if(n==1||n==2)
+        return 1;
+        int temp1=0;
+        int temp2=1;
+        int temp3=1;
+        while(n>2)
+        {
+            int temp=temp1+temp2+temp3;
+               temp1=temp2;
+               temp2=temp3;
+               temp3=temp;
+               n--;
+        }
+        return temp3;
+    }
+}
