@@ -1,0 +1,30 @@
+class Solution {
+    public long zeroFilledSubarray(int[] nums) {
+        long count=0;
+          int start=0;
+          int end=0;
+          
+        while(start<nums.length)
+          {
+              if(nums[start]==0)
+              {
+                  end=start;
+                  while(end<nums.length&&nums[end]==0)
+                  {
+                      end++;
+                     
+                  }
+                  long total=end-start;
+                  total=total*(total+1)/2;
+                  count=count+total;
+                  start=end;
+              }
+              else{
+                  start++;
+              }             
+               
+          }
+
+        return count;
+    }
+}
